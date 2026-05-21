@@ -1,0 +1,7 @@
+data/train_transaction.csv
+data/train_identity.csv
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+/test_features.csv
