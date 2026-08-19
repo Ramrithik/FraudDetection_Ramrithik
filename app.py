@@ -46,7 +46,7 @@ st.sidebar.markdown("---")
 st.sidebar.subheader("Global Filters")
 
 min_amt, max_amt = float(df['TransactionAmt'].min()), float(df['TransactionAmt'].max())
-amt_filter = st.sidebar.slider("Transaction Amount Range ($)", min_amt, max_amt, (min_amt, max_amt))
+amt_filter = st.sidebar.slider("Transaction Amount (scaled)", min_amt, max_amt, (min_amt, max_amt))
 
 filtered_df = df[(df['TransactionAmt'] >= amt_filter[0]) & (df['TransactionAmt'] <= amt_filter[1])]
 
@@ -62,7 +62,7 @@ if page == "Overview":
     col1.metric("Total Transactions", f"{total_txns:,}")
     col2.metric("Confirmed Fraud", f"{total_fraud:,}")
     col3.metric("Critical Detection Rate", f"{detection_rate:.1f}%")
-    col4.metric("Avg Fraud Amount", f"${avg_fraud_amt:.2f}")
+    col4.metric("Avg Fraud Amt (scaled)", f"{avg_fraud_amt:.2f}")
     
     colA, colB = st.columns(2)
     with colA:
@@ -74,9 +74,9 @@ if page == "Overview":
         st.plotly_chart(fig1, width='stretch')
         
     with colB:
-        st.subheader("Fraud Status vs. Transaction Amount")
+        st.subheader("Fraud Status vs. Transaction Amount (scaled)")
         fig2 = px.box(filtered_df, x="Actual_Fraud", y="TransactionAmt", color="Actual_Fraud",
-                      labels={"Actual_Fraud": "Is Fraud (0=No, 1=Yes)"})
+                      labels={"Actual_Fraud": "Is Fraud (0=No, 1=Yes)", "TransactionAmt": "Transaction Amount (scaled)"})
         fig2.update_yaxes(range=[0, filtered_df['TransactionAmt'].quantile(0.95)]) 
         st.plotly_chart(fig2, width='stretch')
 
