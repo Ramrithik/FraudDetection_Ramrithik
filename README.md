@@ -3,7 +3,7 @@
 An end-to-end machine learning pipeline for detecting fraudulent transactions, built on the [IEEE-CIS Fraud Detection](https://www.kaggle.com/c/ieee-fraud-detection) Kaggle dataset (590,540 transactions, 434 features after identity merge).
 
 ## Live Dashboard
-[https://ramrithiksfrauddetection.streamlit.app/](https://ramtithiksfrauddetection.streamlit.app/)
+[https://ramrithiksfrauddetection.streamlit.app/](https://frauddetectionramrithik1.streamlit.app/)
 
 ---
 
